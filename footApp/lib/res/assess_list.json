@@ -1,0 +1,52 @@
+{
+  "data": [
+    {
+      "assess_task_id": 1,
+      "assessor_type_name": "指定年级",
+      "assess_object_name": "",
+      "assess_template_name": "考核题库",
+      "assessor_type": 83,
+      "assessor_type_code": "2",
+      "sts_time": 1626337297813,
+      "assess_task_name": "宪法",
+      "sts": 0,
+      "assess_template_id": 1,
+      "school_id": 1,
+      "assess_begin_time": "2020-10-01",
+      "assess_end_time": "2021-12-08",
+      "assess_object_code": ""
+    },
+    {
+      "assess_task_id": 2,
+      "assessor_type_name": "所有人",
+      "assess_object_name": "",
+      "assess_template_name": "考核题库",
+      "assessor_type": 82,
+      "assessor_type_code": "1",
+      "sts_time": 1626337297813,
+      "assess_task_name": "民法典",
+      "sts": 0,
+      "assess_template_id": 1,
+      "school_id": 1,
+      "assess_begin_time": "2020-10-01",
+      "assess_end_time": "2021-12-08",
+      "assess_object_code": ""
+    },
+    {
+      "assess_task_id": 3,
+      "assessor_type_name": "所有人",
+      "assess_object_name": "",
+      "assess_template_name": "考核题库",
+      "assessor_type": 82,
+      "assessor_type_code": "1",
+      "sts_time": 1626337297813,
+      "assess_task_name": "六中全会",
+      "sts": 0,
+      "assess_template_id": 1,
+      "school_id": 1,
+      "assess_begin_time": "2020-10-01",
+      "assess_end_time": "2021-12-08",
+      "assess_object_code": ""
+    }
+  ]
+}
