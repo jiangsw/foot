@@ -1,4 +1,4 @@
-package com.vanve.irr.base;
+package com.vanve.foot.server.base;
 
 import org.springframework.stereotype.Service;
 

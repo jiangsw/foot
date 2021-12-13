@@ -1,4 +1,4 @@
-package com.vanve.irr.utils;
+package com.vanve.foot.server.utils;
 
 public class Constants {
 

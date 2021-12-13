@@ -15,11 +15,21 @@ configurations {
 }
 
 repositories {
-	mavenCentral()
+	// mavenCentral()
+  
+  maven { url 'https://maven.aliyun.com/repository/jcenter' }
+  maven { url 'https://maven.aliyun.com/repository/google' }
+  maven { url 'https://maven.aliyun.com/repository/central' }
+  maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+
+  flatDir {
+    dirs '../../../libs'  
+  }
 }
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+  implementation 'org.springframework.boot:spring-boot-starter-web' 
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
@@ -32,7 +42,12 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
 
+  implementation 'org.jsw.commons:jswutils2020'
+
+  implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.0'
   implementation 'org.flywaydb:flyway-core' 
+  implementation 'com.alibaba:fastjson:1.2.61'
+  implementation 'p6spy:p6spy:3.8.2'
 }
 
 test {

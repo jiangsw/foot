@@ -1,4 +1,4 @@
-package com.vanve.irr.utils.config;
+package com.vanve.foot.server.utils.config;
 
 import java.lang.reflect.Method;
 import java.util.Date;
@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.alibaba.fastjson.JSON;
-import com.vanve.irr.utils.helper.ApplicationContextHelper;
+import com.vanve.foot.server.utils.helper.ApplicationContextHelper;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.ResultType;
@@ -24,8 +24,8 @@ import org.springframework.scheduling.config.ScheduledTaskRegistrar;
 import org.springframework.scheduling.support.CronTrigger;
 import org.springframework.util.ReflectionUtils;
 
-@Configuration
-@EnableScheduling
+// @Configuration
+// @EnableScheduling
 public class ScheduleConfig implements SchedulingConfigurer {
 
   protected static final Logger log = LoggerFactory.getLogger(ScheduleConfig.class);

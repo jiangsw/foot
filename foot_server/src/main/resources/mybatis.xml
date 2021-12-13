@@ -19,9 +19,9 @@
     <plugin interceptor="org.jsw.commons.utils.interceptor.PageInterceptor"></plugin>
   </plugins>
   <mappers>
-   	<mapper resource="com/vanve/irr/mapper/BaseMapper.xml" />
-     <mapper resource="com/vanve/irr/mapper/FormsMapper.xml" />
-    <mapper resource="com/vanve/irr/mapper/StatsMapper.xml" />
+   	<mapper resource="com/vanve/foot/server/mapper/BaseMapper.xml" />
+     <!-- <mapper resource="com/vanve/irr/mapper/FormsMapper.xml" />
+    <mapper resource="com/vanve/irr/mapper/StatsMapper.xml" /> -->
   </mappers>
 
 </configuration>

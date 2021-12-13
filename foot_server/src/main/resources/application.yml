@@ -1,30 +1,24 @@
 server:
-  port: 4001
+  port: 4002
   servlet:
-    context-path: /irr
-    session:
-      timeout: PT24H
+    context-path: /foot
 
 spring:
-  mvc:
-    static-path-pattern: /**
-    hiddenmethod:
-      filter:
-        enabled: true
-  resources:
-    static-locations:
-      - classpath:/resources
-      - classpath:/static
-
+  profiles:
+    active:
+      - foot
   jpa:
-    database: oracle
-    properties:
-      hibernate: default_schema:auth
+    database: postgresql
+    # properties:
+    #   hibernate: default_schema:foot
+      # jpa-show-sql: true
+
   datasource:
-    url: jdbc:p6spy:oracle:thin:@192.168.3.201:1521:ora
+    url: jdbc:p6spy:postgresql://192.168.3.201:5432/foot?currentSchema=foot
     driver-class-name: com.p6spy.engine.spy.P6SpyDriver
-    username: irr
-    password: irr
+    username: postgres
+    # password: jswpass325
+    password: jiangsw
     type: com.zaxxer.hikari.HikariDataSource
     hikari:
       minimum-idle: 5
@@ -34,10 +28,13 @@ spring:
       pool-name: DatebookHikariCP
       max-lifetime: 1765000
       connection-timeout: 30000
-      connection-test-query: SELECT * from dual
+      connection-test-query: select 1
+  servlet:
+    multipart:
+      location: e://fileResources/
 
   flyway:
-    enabled: false
+    enabled: true
     baseline-on-migrate: true
     locations:
       - classpath:db/migration
@@ -47,4 +44,7 @@ mybatis:
 
 logging:
   file:
-    name: logs/irr.log
+    name: logs/foot.log
+
+swagger:
+  enabled: true 

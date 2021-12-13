@@ -1,4 +1,4 @@
-package com.vanve.irr.utils.helper;
+package com.vanve.foot.server.utils.helper;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
