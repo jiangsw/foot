@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:foot/commons/config/const.dart';
+import 'package:foot/commons/includes.dart';
+
 import 'package:foot/commons/route/navigator_utils.dart';
 import 'package:foot/commons/win_media.dart';
 import 'package:foot/feature/mine/mine_router.dart';
+import 'package:foot/commons/win_media.dart';
 
 class MineMeView extends StatefulWidget {
   const MineMeView({Key? key}) : super(key: key);
@@ -14,6 +17,8 @@ class MineMeView extends StatefulWidget {
 class _MineMeViewState extends State<MineMeView> {
   @override
   Widget build(BuildContext context) {
+    final model = Provider.of<GlobalModel>(context);
+
     return Padding(
         padding: const EdgeInsets.only(top: 6, left: 6, right: 6),
         child: InkWell(
@@ -22,14 +27,14 @@ class _MineMeViewState extends State<MineMeView> {
             alignment: Alignment.center,
             height: (topBarHeight(context) * 2.0),
             padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 10.0),
-            child: body(),
+            child: body(model),
           ),
           onTap: () =>
               NavigatorUtils.push(context, MineRouter.personalInfoPage),
         ));
   }
 
-  Widget body() {
+  Widget body(GlobalModel model) {
     var row = [
       SizedBox(
         width: 60.0,
@@ -47,9 +52,9 @@ class _MineMeViewState extends State<MineMeView> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             const SizedBox(height: 10),
-            const Text(
-              '张三',
-              style: TextStyle(
+            Text(
+              model.nickName,
+              style: const TextStyle(
                   color: Colors.black,
                   fontSize: 20.0,
                   fontWeight: FontWeight.w500),

@@ -37,7 +37,7 @@ class _HealthKitDemoState extends State<HealthKitDemo> {
   init() async {
     if (!mounted) return;
     // Initialize Event Callbacks
-    AutoRecorderController.autoRecorderStream.listen(_onAutoRecorderEvent);
+    // AutoRecorderController.autoRecorderStream.listen(_onAutoRecorderEvent);
     // Initialize a DataController
     initDataController();
   }

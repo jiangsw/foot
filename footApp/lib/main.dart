@@ -4,19 +4,29 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:foot/commons/config/provider_config.dart';
+import 'package:foot/commons/provider/global_model.dart';
 import 'package:foot/commons/route/base_router.dart';
 import 'package:foot/feature/login/login_page.dart';
 import 'package:foot/utils/theme/app_theme.dart';
+import 'package:provider/provider.dart';
 
 // final _log = Logger('school');
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await SystemChrome.setPreferredOrientations(<DeviceOrientation>[
-    DeviceOrientation.portraitUp,
-    DeviceOrientation.portraitDown
-  ]).then((_) => runApp(MyApp()));
+  runApp(ProviderConfig.getInstance().getGlobal(MyApp()));
+
+  // await SystemChrome.setPreferredOrientations(<DeviceOrientation>[
+  //   DeviceOrientation.portraitUp,
+  //   DeviceOrientation.portraitDown
+  // ]).then((_) => runApp(MyApp()));
+  /// 自定义报错页面
+  ErrorWidget.builder = (FlutterErrorDetails flutterErrorDetails) {
+    debugPrint(flutterErrorDetails.toString());
+    return const Center(child: Text("App错误，快去反馈给作者!"));
+  };
 }
 
 // void setupLocator() async {
@@ -53,6 +63,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final model = Provider.of<GlobalModel>(context)..setContext(context);
+
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
       statusBarIconBrightness: Brightness.dark,
@@ -63,7 +75,7 @@ class MyApp extends StatelessWidget {
       systemNavigationBarIconBrightness: Brightness.dark,
     ));
     return MaterialApp(
-      title: 'Flutter UI',
+      title: model.appName,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,

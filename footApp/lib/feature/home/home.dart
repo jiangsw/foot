@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:badges/badges.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
+import 'package:foot/commons/provider/global_model.dart';
 import 'package:foot/feature/assess/assess_list.dart';
 import 'package:foot/feature/diary/my_dairy_screen.dart';
 import 'package:foot/feature/mine/mine_screen.dart';
@@ -10,6 +11,7 @@ import 'package:foot/feature/party/party.dart';
 import 'package:foot/feature/ranking/foot_ranking_screen.dart';
 import 'package:foot/test/health_test.dart';
 import 'package:foot/widget/utils/image_utils.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -51,10 +53,10 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     _pageList.add(const FootRankingScreen());
     _pageList.add(const AssessListPage());
     _pageList.add(const PartyScreen());
-    // _pageList.add(const MineScreen());
+    _pageList.add(const MineScreen());
 
     // _pageList.add(LineChartPage1());
-    _pageList.add(HealthKitDemo());
+    // _pageList.add(HealthKitDemo());
 
     bottomTabs = getBottomTabs();
 
@@ -127,6 +129,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    final model = Provider.of<GlobalModel>(context);
+
     return Scaffold(
 //      backgroundColor: Colors.white,
       // appBar: AppBar(
@@ -192,6 +196,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         currentIndex: _currentIndex,
         //配置对应的索引值选中
         onTap: (int index) {
+          model.refresh();
           setState(() {
             //改变状态
             _currentIndex = index;

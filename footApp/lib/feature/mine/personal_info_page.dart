@@ -8,10 +8,15 @@ import 'package:foot/commons/check.dart';
 import 'package:foot/commons/commons.dart';
 import 'package:foot/commons/config/const.dart';
 import 'package:foot/commons/declare.dart';
+import 'package:foot/commons/provider/global_model.dart';
+import 'package:foot/commons/route/navigator_utils.dart';
 import 'package:foot/widget/label_row.dart';
 
-// import 'package:image_picker/image_picker.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:flutter_image_compress/flutter_image_compress.dart';
+import 'package:provider/provider.dart';
+
+import 'mine_router.dart';
 
 class PersonalInfoPage extends StatefulWidget {
   const PersonalInfoPage({Key? key}) : super(key: key);
@@ -21,7 +26,7 @@ class PersonalInfoPage extends StatefulWidget {
 }
 
 class _PersonalInfoPageState extends State<PersonalInfoPage> {
-  // final ImagePicker _picker = ImagePicker();
+  final ImagePicker _picker = ImagePicker();
 
   @override
   void initState() {
@@ -35,6 +40,16 @@ class _PersonalInfoPageState extends State<PersonalInfoPage> {
     // } else {
     //   print(v);
     // }
+  }
+
+  _choicePhoto() async {
+    final pickedFile = await _picker.pickImage(
+      source: ImageSource.gallery,
+    );
+    setState(() {
+      logger.d('pickedFile=${pickedFile!.path}');
+      // _imageFile = pickedFile;
+    });
   }
 
   // _openGallery({type = ImageSource.gallery}) async {
@@ -76,12 +91,11 @@ class _PersonalInfoPageState extends State<PersonalInfoPage> {
           height: size ?? null,
           fit: BoxFit.fill);
     } else {
-      return new Image.asset(avatar,
-          fit: BoxFit.fill, width: size ?? null, height: size ?? null);
+      return Image.asset(avatar, fit: BoxFit.fill, width: size, height: size);
     }
   }
 
-  Widget body() {
+  Widget body(GlobalModel model) {
     List data = [
       {'label': '微信号', 'value': '1234567'},
       {'label': '二维码名片', 'value': ''},
@@ -98,17 +112,22 @@ class _PersonalInfoPageState extends State<PersonalInfoPage> {
           width: 55.0,
           height: 55.0,
           child: ClipRRect(
-            borderRadius: BorderRadius.all(Radius.circular(5.0)),
+            borderRadius: const BorderRadius.all(Radius.circular(5.0)),
             child: Image.asset(defIcon, fit: BoxFit.cover),
           ),
         ),
-        // onPressed: () => _openGallery(),
+        onPressed: () {
+          _choicePhoto();
+          // model.refresh();
+        },
       ),
-      const LabelRow(
+      LabelRow(
         label: '昵称',
         isLine: true,
         isRight: true,
-        rValue: '张三',
+        rValue: model.nickName,
+        onPressed: () => NavigatorUtils.pushArgument(
+            context, MineRouter.changeNamePage, model.nickName),
         // onPressed: () => routePush(new ChangeNamePage(model.nickName)),
       ),
       Column(
@@ -136,12 +155,12 @@ class _PersonalInfoPageState extends State<PersonalInfoPage> {
 
   @override
   Widget build(BuildContext context) {
-    // final model = Provider.of<GlobalModel>(context);
+    final model = Provider.of<GlobalModel>(context);
 
     return Scaffold(
       // backgroundColor: appBarColor,
       appBar: baseAppBar(context, '个人信息', backgroundColor: Colors.transparent),
-      body: SingleChildScrollView(child: body()),
+      body: SingleChildScrollView(child: body(model)),
     );
   }
 }

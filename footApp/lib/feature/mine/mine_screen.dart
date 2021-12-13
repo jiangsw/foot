@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:foot/base/base_appbar.dart';
 import 'package:foot/commons/config/colors.dart';
 import 'package:foot/commons/config/strings.dart';
+import 'package:foot/commons/provider/global_model.dart';
 import 'package:foot/feature/diary/step_line_view.dart';
 import 'package:foot/feature/diary/step_number_view.dart';
 import 'package:foot/feature/mine/mine_me_view.dart';
 import 'package:foot/feature/mine/mine_menu_view.dart';
 import 'package:foot/utils/theme/fitness_app_theme.dart';
 import 'package:foot/widget/gradual_change_view.dart';
+import 'package:provider/provider.dart';
 
 class MineScreen extends StatefulWidget {
   const MineScreen({Key? key}) : super(key: key);

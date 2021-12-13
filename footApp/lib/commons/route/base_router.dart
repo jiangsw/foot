@@ -5,6 +5,7 @@ import 'package:foot/feature/assess/assess_router.dart';
 import 'package:foot/feature/main_router.dart';
 import 'package:foot/feature/mine/mine_router.dart';
 import 'package:foot/feature/ranking/ranking_router.dart';
+import 'package:foot/feature/update/update_router.dart';
 
 import 'IRouter.dart';
 import 'route_not_found.dart';
@@ -38,6 +39,7 @@ class BaseRouter {
     _mListRouter.add(RankingRouter());
     _mListRouter.add(AssessRouter());
     _mListRouter.add(MineRouter());
+    _mListRouter.add(UpdateRouter());
 
     // _mListRouter.add(TestRouter());
 

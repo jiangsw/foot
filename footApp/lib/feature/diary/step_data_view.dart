@@ -10,8 +10,13 @@ import 'package:percent_indicator/circular_percent_indicator.dart';
 class StepDataView extends StatelessWidget {
   final AnimationController? animationController;
   final Animation<double>? animation;
+  final Map stepData;
 
-  const StepDataView({Key? key, this.animationController, this.animation})
+  const StepDataView(
+      {Key? key,
+      this.animationController,
+      this.animation,
+      required this.stepData})
       : super(key: key);
 
   @override
@@ -22,43 +27,43 @@ class StepDataView extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          Column(children: const [
+          Column(children: [
             Text(
-              '423',
-              style: TextStyle(
+              stepData['calories_nbr'] ?? '0',
+              style: const TextStyle(
                   fontSize: 26,
                   color: Colors.lightBlue,
                   fontWeight: FontWeight.bold),
             ),
-            Text('卡路里',
+            const Text('卡路里',
                 style: TextStyle(
                     fontSize: 12,
                     color: Colors.redAccent,
                     fontWeight: FontWeight.bold)),
           ]),
-          Column(children: const [
+          // Column(children: const [
+          //   Text(
+          //     '120',
+          //     style: TextStyle(
+          //         fontSize: 26,
+          //         color: Colors.lightBlue,
+          //         fontWeight: FontWeight.bold),
+          //   ),
+          //   Text('分钟',
+          //       style: TextStyle(
+          //           fontSize: 12,
+          //           color: Colors.redAccent,
+          //           fontWeight: FontWeight.bold)),
+          // ]),
+          Column(children: [
             Text(
-              '120',
-              style: TextStyle(
+              stepData['distance_nbr'] ?? '0',
+              style: const TextStyle(
                   fontSize: 26,
                   color: Colors.lightBlue,
                   fontWeight: FontWeight.bold),
             ),
-            Text('分钟',
-                style: TextStyle(
-                    fontSize: 12,
-                    color: Colors.redAccent,
-                    fontWeight: FontWeight.bold)),
-          ]),
-          Column(children: const [
-            Text(
-              '12.1',
-              style: TextStyle(
-                  fontSize: 26,
-                  color: Colors.lightBlue,
-                  fontWeight: FontWeight.bold),
-            ),
-            Text('公里',
+            const Text('公里',
                 style: TextStyle(
                     fontSize: 12,
                     color: Colors.redAccent,

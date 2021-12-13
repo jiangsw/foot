@@ -4,8 +4,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:foot/commons/config/styles.dart';
 import 'package:foot/commons/declare.dart';
+import 'package:foot/commons/includes.dart';
+import 'package:foot/commons/provider/global_model.dart';
 import 'package:foot/commons/route/navigator_utils.dart';
 import 'package:foot/feature/main_router.dart';
+// import 'package:provider/provider.dart';
 // import 'package:foot/commons/route/navigator_utils.dart';
 // import 'package:school/commons/declare.dart';
 // import 'package:school/commons/res/styles.dart';
@@ -26,6 +29,8 @@ class SignInPage extends StatefulWidget {
 }
 
 class _SignInPageState extends State<SignInPage> {
+  late GlobalModel model;
+
   bool _isShowUserDelete = false;
   bool _isShowPwdDelete = false;
 
@@ -122,6 +127,7 @@ class _SignInPageState extends State<SignInPage> {
       _loginParams['password'] = '123';
     }
 
+    model.init();
     NavigatorUtils.push(context, MainRouter.homeScreen, clearStack: true);
 
     // if (_userController.text == '') {
@@ -174,6 +180,8 @@ class _SignInPageState extends State<SignInPage> {
 
   @override
   Widget build(BuildContext context) {
+    model = Provider.of<GlobalModel>(context);
+
     return Container(
         padding: const EdgeInsets.only(top: 60),
         child: Stack(

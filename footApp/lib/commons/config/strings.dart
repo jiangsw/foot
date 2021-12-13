@@ -24,7 +24,9 @@ class Strings {
 
   static String contactsTitle = "通讯录";
   static String partyTitle = "党建";
-  static String wx_payManager = "支付管理";
 
   static String testTitle = "DemoList";
+
+  static String signInHealthDataMessage = '正在连接运动健康平台';
+  static String loadingHealthDataMessage = '正在接受运动健康数据';
 }

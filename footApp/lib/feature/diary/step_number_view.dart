@@ -10,12 +10,20 @@ import 'package:percent_indicator/circular_percent_indicator.dart';
 class StepNumberView extends StatelessWidget {
   final AnimationController? animationController;
   final Animation<double>? animation;
+  final int stepNumber;
 
-  const StepNumberView({Key? key, this.animationController, this.animation})
+  const StepNumberView(
+      {Key? key,
+      this.animationController,
+      this.animation,
+      required this.stepNumber})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var stepPercent1 = (stepNumber / 10000).toStringAsFixed(1);
+    var stepPercent2 = ((stepNumber / 10000) * 100).toStringAsFixed(1);
+
     return Padding(
       padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
       child: Row(
@@ -34,16 +42,18 @@ class StepNumberView extends StatelessWidget {
             animation: true,
             animationDuration: 2400,
             lineWidth: 8.0,
-            percent: 0.4,
+            percent: double.parse(stepPercent1),
             center: RichText(
               textAlign: TextAlign.center,
-              text: const TextSpan(
-                text: "2930步\n",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 36.0),
+              text: TextSpan(
+                text: stepNumber.toString() + "步\n",
+                style: const TextStyle(
+                    fontWeight: FontWeight.bold, fontSize: 36.0),
                 children: <TextSpan>[
                   TextSpan(
-                    text: '40%',
-                    style: TextStyle(color: Color(0xFF008EFF), fontSize: 28),
+                    text: stepPercent2 + '%',
+                    style:
+                        const TextStyle(color: Color(0xFF008EFF), fontSize: 28),
                   )
                 ],
               ),
@@ -195,7 +205,7 @@ class CurvePainter extends CustomPainter {
 
     final gradient1 = new SweepGradient(
       tileMode: TileMode.repeated,
-      colors: [Colors.white, Colors.white],
+      colors: const [Colors.white, Colors.white],
     );
 
     var cPaint = new Paint();

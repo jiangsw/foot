@@ -4,6 +4,7 @@ import 'package:foot/commons/declare.dart';
 import 'package:foot/commons/route/navigator_utils.dart';
 import 'package:foot/commons/win_media.dart';
 import 'package:foot/feature/main_router.dart';
+import 'package:foot/feature/update/update_router.dart';
 import 'package:foot/utils/theme/app_theme.dart';
 import 'package:foot/widget/list_tile_view.dart';
 
@@ -32,6 +33,7 @@ class _MineMenuViewState extends State<MineMenuView> {
     {'label': '卡片', 'icon': 'assets/images/ic_small_code.png'},
     // {'label': '通讯录', 'icon': 'assets/images/address_book.png'},
     {'label': '设置', 'icon': 'assets/images/ic_setting.png'},
+    {'label': '更新', 'icon': 'assets/images/ic_update.png'},
     {'label': '退出登录', 'icon': 'assets/images/power.png'},
   ];
 
@@ -63,6 +65,9 @@ class _MineMenuViewState extends State<MineMenuView> {
     switch (label) {
       case '通讯录':
         NavigatorUtils.push(context, MineRouter.contactListPage);
+        break;
+      case '更新':
+        NavigatorUtils.push(context, UpdateRouter.updatePage);
         break;
       case '退出登录':
         NavigatorUtils.push(context, MainRouter.loginPage, clearStack: true);
